@@ -9,6 +9,8 @@ jobs:
   # This workflow contains a single job called "build"
   build-and-push-image:
     runs-on: ubuntu-latest
+    env:
+      REGISTRY: ghcr.io/darkhader
     permissions:
       contents: read
       packages: write
@@ -16,8 +18,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Print GitHub Actor
-        run: echo "GitHub Actor is $env.REGISTRY"
       - name: Log in to the Container registry
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
         with:
