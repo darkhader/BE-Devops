@@ -50,10 +50,6 @@ jobs:
             aws-region: <your-aws-region>  # Replace <your-aws-region> with your AWS region
 
       - name: Login to AWS ECR
-        with:
-          registry: 364402321456.dkr.ecr.ap-southeast-1.amazonaws.com
-          username: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 381492316277.dkr.ecr.ap-southeast-1.amazonaws.com
 
