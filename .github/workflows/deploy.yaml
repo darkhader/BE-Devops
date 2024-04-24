@@ -1,0 +1,27 @@
+name: Deploy to AWS ECR
+
+on:
+  push:
+    branches:
+      - main  # Change this to your main branch name
+
+jobs:
+  push_to_registries:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to AWS ECR
+        run: |
+          aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 381492316277.dkr.ecr.ap-southeast-1.amazonaws.com
+
+      - name: Build Docker image
+        run: docker build -t staging-codese-be .
+
+      - name: Tag Docker image
+        run: docker tag staging-codese-be:latest 381492316277.dkr.ecr.ap-southeast-1.amazonaws.com/staging-codese-be:latest
+
+      - name: Push Docker image to ECR
+        run: docker push 381492316277.dkr.ecr.ap-southeast-1.amazonaws.com/staging-codese-be:latest
