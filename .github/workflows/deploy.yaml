@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REGISTRY: ghcr.io/darkhader
+      IMAGE_NAME: FE
     permissions:
       contents: read
       packages: write
