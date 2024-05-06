@@ -71,7 +71,7 @@ jobs:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}-${{ github.sha }}
-          labels: ${{ steps.meta.outputs.labels }
+          labels: ${{ steps.meta.outputs.labels }}
 
       - name: Push Docker image to ECR
         run: docker push 381492316277.dkr.ecr.ap-southeast-1.amazonaws.com/staging-codese-be:latest
