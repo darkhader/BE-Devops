@@ -10,6 +10,6 @@ public class HelloWorldController {
 
     @GetMapping("/hello")
     public String hello() {
-        return "BTVN done 2!";
+        return "BTVN done ingress!";
     }
 }
